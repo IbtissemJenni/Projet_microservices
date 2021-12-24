@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: zuul-service
+server:
+  port: 7000
+zuul:
+  routes:
+      serv-films: 
+        path: /films-service/** 
+        serviceId: films-service
+      serv-series: 
+        path: /series-service/** 
+        serviceId: series-service
+      serv-search:
+        path: /search-service/** 
+        serviceId: search-service
+      serv-review:
+        path: /review-service/**
+        serviceId: review-service
+eureka:                  
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

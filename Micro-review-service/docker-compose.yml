@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  mysql-reviews:
+    image: samuelgarciahub/tfg-mysql-reviews #name of the image we have created
+    restart: always
+    container_name: mysql-reviews
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE 
+    ports:
+      - '3308:3308'
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: reviews
+  phpmyadmin-reviews:
+    depends_on:
+      - mysql-reviews
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-3
+    ports:
+      - '8082:80'
+    environment:
+      PMA_HOST: mysql-reviews      

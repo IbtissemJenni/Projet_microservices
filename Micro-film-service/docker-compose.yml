@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  mysql-films:
+    image: samuelgarciahub/tfg-mysql-films #name of the image we have created
+    restart: always
+    container_name: mysql-films
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: films
+  phpmyadmin-films:
+    depends_on:
+      - mysql-films
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-1
+    ports:
+      - '8083:80'
+    environment:
+      PMA_HOST: mysql-films    

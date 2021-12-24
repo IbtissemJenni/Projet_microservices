@@ -1,0 +1,13 @@
+<html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="navbar">
+  <img class="logo" src="../../../assets/logo.png">
+  <a class="active" routerLink=""><i class="fa fa-fw fa-home"></i> Home</a>
+  <a routerLink="/films"><i class="fa fa-fw fa-film"></i> Films</a>
+  <a routerLink="/series"><i class="fa fa-fw fa-tv"></i> Series</a>
+  <a routerLink="/search"><i class="fa fa-fw fa-search"></i> Search</a>
+  <p class="username" *ngIf="(user | async)" > Hello {{user | async}}</p>
+</div>
+  <app-container></app-container>
+</html>
